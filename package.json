@@ -17,6 +17,10 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^20.0.1"
+    "electron": "^19.0.9"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3"
   }
 }

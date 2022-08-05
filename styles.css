@@ -1,3 +1,64 @@
 /* styles.css */
 
 /* Add styles here to customize the appearance of your app */
+
+#app-table{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    grid-auto-rows:200px;
+}
+
+#app-table>*{
+    border: 1px solid black;
+}
+
+#app {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 200px;
+}
+
+#app>* {
+    border: 1px solid black;
+}
+
+.caseInactive {
+    background-color: lightgray;
+    display:block;
+    align-items:center;
+}
+
+#caseActive1 {
+    background-color: lightgoldenrodyellow;
+}
+
+#calendrier-mois-actuel {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#mois-actuel {
+    width: 200px;
+    text-align:center;
+    }
+#mois-precedent, #mois-suivant {
+    padding: 20px;
+    cursor:pointer;
+}
+.bt-creer-evenement {
+    background-color:aqua;
+    margin-bottom: 10px;
+    padding:10px;
+    cursor:pointer;
+}
+
+#event{
+    display:block;
+    align-items:center;
+    cursor:pointer;
+    justify-content: center;
+    background-color: azure;
+    height:80%;
+    width:80%;
+}

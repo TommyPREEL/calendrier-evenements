@@ -3,15 +3,36 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self' 'unsafe-eval'">
     <link href="./styles.css" rel="stylesheet">
     <title>Hello World!</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+
+    <div id="calendrier-mois-actuel">
+      <div id="mois-precedent"><</div>
+      <div id="mois-actuel"></div>
+      <div id="mois-suivant">></div>
+    </div>
+
+    <input type="button" class="bt-creer-evenement" id="bt-creer-evenement" value="Ajouter un évenement"></input>
+    <!--<div class="test-inner" id="test-inner"></div>
+    <div id="prev-month-next" class="prev_month_next"></div>
+    <table id="app-table">
+      <thead>
+        <tr>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+          <th>Sunday</th>
+        </tr>
+      </thead>
+      <tbody id="calendar"></tbody>
+    </table>-->
+    <div id="app"></div>
 
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>

@@ -165,7 +165,8 @@ const mois_precedent = document.getElementById("mois-precedent")
 const mois_actuel = document.getElementById("mois-actuel")
 const mois_suivant = document.getElementById("mois-suivant")
 const bt_creer_evenement = document.getElementById("bt-creer-evenement")
-let mysql = require('mysql2');
+const mysql = require('mysql2');
+
 
 
 mois_suivant.addEventListener("click", () => {
@@ -183,8 +184,22 @@ mois_precedent.addEventListener("click", () => {
 })
 
 bt_creer_evenement.addEventListener("click", () => {
-    ipcRenderer.invoke("event-add").then(res => {
-        console.log(res);
+    ipcRenderer.invoke("event-add")
+})
+
+mainApp.addEventListener("click", function(e){
+    //console.log(document.querySelectorAll("div.caseActive"))
+    //console.log(e.target.dataset.id)
+    getEventById(e.target.dataset.id, function(err, rows, fields){
+        if(err){
+            console.log("An error ocurred performing the query.")
+        }
+        else{
+            if(rows.length > 0) {
+                ipcRenderer.invoke("event-view", rows[0])
+            }
+        }
+        
     })
 })
 
@@ -207,14 +222,13 @@ function afficheCalendrier(d) {
             console.log(err);
         }
         else{
-            console.log("Query succesfully executed", rows);
+            console.log("Query succesfully executed");
             res = rows
             for (let i = 1; i < numPremierJourDuMois; i++) {
                 ajouteCaseGrise()
             }
             for (let i_jdm = 1; i_jdm <= numNombreJourDuMois; i_jdm++) {
                 ajouteCaseActive(i_jdm)
-                console.log(res)
                 for(let i in res){
                     if(res[i]["date_deb"].getDate() == i_jdm)
                     {
@@ -245,8 +259,8 @@ function afficheEvent(event, caseCalendrier){
     let elem = document.createElement("div")
     elem.className = "event"
     elem.setAttribute("id", "event")
+    elem.setAttribute("data-id", event["id"])
     elem.innerHTML = event["titre"]
-    console.log(elem)
     document.getElementById("caseActive"+caseCalendrier).appendChild(elem)
     
 }
@@ -318,11 +332,13 @@ function getAllEvents(date, cb){
     if(month<10){month = "0"+month}
     let fullDatePurcent = date.getFullYear()+"-"+month+"%";
     let query = 'SELECT * FROM event WHERE date_deb LIKE ?';
-    let res = {};
         connection.query(query,[fullDatePurcent], cb)
+}
 
-
-    //return rows;
+function getEventById(id, cb){
+    ConnexionBdd()
+    let query = 'SELECT * FROM event WHERE id = ?';
+        connection.query(query,[id], cb)
 }
 
 

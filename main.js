@@ -1,17 +1,48 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
+let mainWindow = null;
+let viewWindow = null;
 
+ipcMain.handle("event-add-close", (evt, params) => {
+  BrowserWindow.fromWebContents(evt.sender).close()
+  // reload la page main
+  mainWindow.reload()
+})
+
+ipcMain.handle("event-view-close", (evt, params) => {
+  BrowserWindow.fromWebContents(evt.sender).close()
+  // reload la page main
+  mainWindow.reload()
+})
+
+ipcMain.handle("event-edit-close", (evt, params) => {
+  BrowserWindow.fromWebContents(evt.sender).close()
+  viewWindow.close()
+  // reload la page main
+  mainWindow.reload()
+})
 
 ipcMain.handle("event-add", (evt, params) => {
   createAddWindow()
 })
 
+ipcMain.handle("event-view", (evt, params) => {
+  createViewWindow(params)
+
+})
+
+ipcMain.handle("event-edit", (evt, params) => {
+  createEditWindow(params)
+
+})
+
 function createAddWindow () {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  const addWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    parent: mainWindow,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -20,7 +51,49 @@ function createAddWindow () {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('add.html')
+  addWindow.loadFile('add.html')
+
+  // Open the DevTools.
+  // mainWindow.webContents.openDevTools()
+}
+
+function createViewWindow (params) {
+  // Create the browser window.
+  viewWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    parent: mainWindow,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      preload: path.join(__dirname, 'preload.js')
+    }
+  })
+
+  // and load the index.html of the app.
+  viewWindow.loadFile('view.html', {query: {"data": JSON.stringify(params)}})
+
+
+  // Open the DevTools.
+  // mainWindow.webContents.openDevTools()
+}
+
+function createEditWindow (params) {
+  // Create the browser window.
+  const editWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    parent: viewWindow,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      preload: path.join(__dirname, 'preload.js')
+    }
+  })
+
+  // and load the index.html of the app.
+  editWindow.loadFile('edit.html', {query: {"data": JSON.stringify(params)}})
+
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -28,7 +101,7 @@ function createAddWindow () {
 
 function createWindow () {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {

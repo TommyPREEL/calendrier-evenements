@@ -12,10 +12,6 @@
     width:250px;
     padding:10px;
 }
-
-/*#app-table>*{
-    border: 1px solid black;
-}*/
 *{
     font-family:Verdana;
 }
@@ -37,7 +33,9 @@
     box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.7);
     border-radius: 10px;
 }
-
+.caseActive{
+    padding: 5px;
+}
 .caseInactive {
     background-color: lightgray !important;
 }
@@ -197,6 +195,212 @@
     cursor:pointer;
 }
 #view-buttons{
+    display:flex;
+    justify-content: center;
+}
+
+/* CSS de la page Modification de l'evenement */
+#edit-titre{
+    font-size: 30px;
+    text-align:center;
+    padding:10px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    border-radius: 10px;
+}
+#edit-date{
+    font-size: 20px;
+    text-align:center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    border-radius: 10px;
+}
+#edit-date-debut{
+    font-size: 20px;
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    width:180px;
+    border-radius: 10px;
+    padding:10px;
+}
+#edit-date-fin{
+    font-size: 20px;
+    text-align:center;
+    display:flex;
+    width:180px;
+    justify-content: center;
+    border-radius: 10px;
+    padding:10px;
+}
+#edit-logo-geo{
+    width:20px;
+    height:20px;
+    filter: opacity(0.5) drop-shadow(0 0 0 red); 
+}
+#edit-lieu{
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    text-align:center;
+    border-radius: 10px;
+    padding:10px;
+}
+#edit-description{
+    font-size: 20px;
+    text-align:center;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    border-radius: 10px;
+    padding:10px;
+}
+#edit-categorie{
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    text-align:center;
+    border-radius: 10px;
+    padding:10px;
+}
+#edit-statut{
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    text-align:center;
+    border-radius: 10px;
+    padding:10px;
+}
+#edit-transparence{
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    text-align:center;
+    border-radius: 10px;
+    padding:10px;
+}
+#edit-modifier{
+    background-color: rgb(197, 251, 121);
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    padding:10px;
+    margin:10px;
+    cursor:pointer;
+}
+#edit-supprimer{
+    background-color: rgb(255, 90, 90);
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    padding:10px;
+    margin:10px;
+    cursor:pointer;
+}
+#edit-buttons{
+    display:flex;
+    justify-content: center;
+}
+
+/* CSS de la page Ajout d'un evenement */
+#add-titre{
+    font-size: 30px;
+    text-align:center;
+    padding:10px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    border-radius: 10px;
+}
+#add-date{
+    font-size: 20px;
+    text-align:center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    border-radius: 10px;
+}
+#add-date-debut{
+    font-size: 20px;
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    width:180px;
+    border-radius: 10px;
+    padding:10px;
+}
+#add-date-fin{
+    font-size: 20px;
+    text-align:center;
+    display:flex;
+    width:180px;
+    justify-content: center;
+    border-radius: 10px;
+    padding:10px;
+}
+#add-logo-geo{
+    width:20px;
+    height:20px;
+    filter: opacity(0.5) drop-shadow(0 0 0 red); 
+}
+#add-lieu{
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    text-align:center;
+    border-radius: 10px;
+    padding:10px;
+}
+#add-description{
+    font-size: 20px;
+    text-align:center;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    border-radius: 10px;
+    padding:10px;
+}
+#add-categorie{
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    text-align:center;
+    border-radius: 10px;
+    padding:10px;
+}
+#add-statut{
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    text-align:center;
+    border-radius: 10px;
+    padding:10px;
+}
+#add-transparence{
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    text-align:center;
+    border-radius: 10px;
+    padding:10px;
+}
+#add-ajouter{
+    background-color: rgb(197, 251, 121);
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    padding:10px;
+    margin:10px;
+    cursor:pointer;
+}
+#add-annuler{
+    background-color: rgb(255, 90, 90);
+    box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.7);
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    padding:10px;
+    margin:10px;
+    cursor:pointer;
+}
+#add-buttons{
     display:flex;
     justify-content: center;
 }
